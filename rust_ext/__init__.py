@@ -9,7 +9,7 @@ import shutil
 
 
 class RustBuildCommand(Command):
-    """ 
+    """
     Command for building rust crates via cargo.
 
     Don't use this directly; use the build_rust_cmdclass
@@ -68,20 +68,20 @@ class RustBuildCommand(Command):
             msg = "cargo failed with code: %d\n%s" % (e.returncode, e.output)
             raise Exception(msg)
         except OSError:
-            raise Exception("Unable to execute 'cargo' - this package " 
-                "requires rust to be installed and cargo to be on the PATH")
+            raise Exception("Unable to execute 'cargo' - this package "
+                            "requires rust to be installed and cargo to be on the PATH")
 
         if not self.quiet:
             print(output, file=sys.stderr)
 
-        # Find the shared library that cargo hopefully produced and copy 
+        # Find the shared library that cargo hopefully produced and copy
         # it into the build directory as if it were produced by build_cext.
         if self.debug:
             suffix = "debug"
         else:
             suffix = "release"
 
-        target_dir = os.path.join(os.path.dirname(self.cargo_toml_path), 
+        target_dir = os.path.join(os.path.dirname(self.cargo_toml_path),
             "target/", suffix)
 
         if sys.platform == "win32":
@@ -109,15 +109,15 @@ class RustBuildCommand(Command):
         shutil.copyfile(dylib_path, ext_path)
 
 
-def build_rust_cmdclass(cargo_toml_path, debug=False, 
+def build_rust_cmdclass(cargo_toml_path, debug=False,
                         extra_cargo_args=None, quiet=False):
     """
     Args:
         cargo_toml_path (str)   The path to the cargo.toml manifest
                                 (--manifest)
-        debug (boolean)         Controls whether --debug or --release is 
+        debug (boolean)         Controls whether --debug or --release is
                                 passed to cargo.
-        extra_carg_args (list)  A list of extra argumenents to be passed to 
+        extra_carg_args (list)  A list of extra argumenents to be passed to
                                 cargo.
         quiet (boolean)         If True, doesn't echo cargo's output.
 
