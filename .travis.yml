@@ -3,7 +3,8 @@ rust:
     - stable
     - beta
     - nightly
+sudo: required
 script:
-  - pip install tox
+  - sudo pip install tox
   - tox
 
