@@ -8,7 +8,7 @@ setup(name='hello-rust',
         # 'cargo extensions/cargo.toml' before building your package.
         'build_rust': build_rust_cmdclass('extensions/Cargo.toml'),
         # This causes your rust binary to be automatically installed
-        # with the package when install_lib runs (including when you 
+        # with the package when install_lib runs (including when you
         # run 'setup.py install'.
         'install_lib': install_lib_including_rust
     },
