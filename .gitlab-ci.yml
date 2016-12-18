@@ -1,0 +1,28 @@
+
+image: ubuntu:16.04
+before_script:
+  - apt update
+  - apt install -y curl python2.7-dev python3.5-dev build-essential tox
+  - curl https://sh.rustup.rs -sSf | sh -s -- -y
+  - export PATH=$HOME/.cargo/bin:$PATH
+  - rustup update stable
+  - rustup update beta
+  - rustup update nightly
+
+test:stable:
+  script:
+    - export PATH=$HOME/.cargo/bin:$PATH
+    - rustup default stable
+    - tox
+
+test:beta:
+  script:
+    - export PATH=$HOME/.cargo/bin:$PATH
+    - rustup default beta
+    - tox
+
+test:nightly:
+  script:
+    - export PATH=$HOME/.cargo/bin:$PATH
+    - rustup default nightly
+    - tox
