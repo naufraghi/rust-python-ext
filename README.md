@@ -1,5 +1,5 @@
 # rust-python-ext
-Setuptools helpers for rust Python extensions.
+[![build status](https://gitlab.com/naufraghi/rust-python-ext/badges/enable-ci/build.svg)](https://gitlab.com/naufraghi/rust-python-ext/pipelines/) Setuptools helpers for rust Python extensions. 
 
 Compile and distribute Python extensions written in rust as easily as if they were written in C. 
 
