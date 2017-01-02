@@ -4,15 +4,18 @@ image: registry.gitlab.com/naufraghi/rust-python-ext
 
 test:stable:
   script:
+    - export PATH=$HOME/.cargo/bin:$PATH
     - rustup default stable
     - tox
 
 test:beta:
   script:
+    - export PATH=$HOME/.cargo/bin:$PATH
     - rustup default beta
     - tox
 
 test:nightly:
   script:
+    - export PATH=$HOME/.cargo/bin:$PATH
     - rustup default nightly
     - tox
