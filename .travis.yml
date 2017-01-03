@@ -8,7 +8,6 @@ sudo: required
 install:
   - curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain $RUST_VERSION
   - export PATH="$HOME/.cargo/bin:$PATH"
-  - export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.cargo/lib"
   - rustc -V
 script:
   - sudo pip install tox
