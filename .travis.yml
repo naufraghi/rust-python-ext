@@ -6,6 +6,7 @@ python:
   - "2.7"  # tox manages the python matrix
 env:
   - RUST_VERSION=stable
+  - RUST_VERSION=beta
   - RUST_VERSION=nightly
 sudo: required
 install:
