@@ -3,6 +3,8 @@
 
 Compile and distribute Python extensions written in rust as easily as if they were written in C. 
 
+Compile and distribute Python extensions written in rust as easily as if they were written in C.
+
 Well, maybe easier - it's rust.
 
 ## Example
@@ -14,23 +16,23 @@ from setuptools import setup
 from rust_ext import build_rust_cmdclass, install_lib_including_rust
 
 setup(name='hello-rust',
-    version='1.0',
-    cmdclass={
-        # This enables 'setup.py build_rust', and makes it run 
-        # 'cargo extensions/cargo.toml' before building your package.
-        'build_rust': build_rust_cmdclass('extensions/cargo.toml'),
-        # This causes your rust binary to be automatically installed
-        # with the package when install_lib runs (including when you 
-        # run 'setup.py install'.
-        'install_lib': install_lib_including_rust
-    },
-    packages=['hello_rust'],
-    # rust extensions are not zip safe, just like C-extensions.
-    zip_safe=False
+      version='1.0',
+      cmdclass={
+          # This enables 'setup.py build_rust', and makes it run
+          # 'cargo extensions/cargo.toml' before building your package.
+          'build_rust': build_rust_cmdclass('extensions/cargo.toml'),
+          # This causes your rust binary to be automatically installed
+          # with the package when install_lib runs (including when you
+          # run 'setup.py install'.
+          'install_lib': install_lib_including_rust
+      },
+      packages=['hello_rust'],
+      # rust extensions are not zip safe, just like C-extensions.
+      zip_safe=False
 )
 ```
 
-You can optionally pass additional arguments to cargo through build_rust_cmdclass - see 
+You can optionally pass additional arguments to cargo through build_rust_cmdclass - see
 https://github.com/novocaine/rust-python-ext/blob/master/rust_ext/__init__.py.
 
 ### Result:
@@ -73,16 +75,16 @@ Rust says: Hello Python!
 
 ## Notes
 
-* Unlike distutils, rust-python-ext delegates all rust build decisions to cargo. 
-So you can't pass compiler args to the compiler from setup.py. This is by design. Cargo's awesome - use that. 
+* Unlike distutils, rust-python-ext delegates all rust build decisions to cargo.
+So you can't pass compiler args to the compiler from setup.py. This is by design. Cargo's awesome - use that.
 You can however pass args to cargo which might then influence what it does.
 
-* If you want to access the python C API from rust, use https://github.com/dgrunwald/rust-cpython. 
+* If you want to access the python C API from rust, use https://github.com/dgrunwald/rust-cpython.
 The example dir contains a project that shows how this is done.
 
 * Tested on Homebrew python 2.7.9 on OS X - it should not be hard to get this to work on python 3, but I have not tested it yet.
 
-* This should interop just fine with other C-exts or cython being in the package, although I haven't tested it. 
+* This should interop just fine with other C-exts or cython being in the package, although I haven't tested it.
 The cmdclass approach is minimally invasive and is how, I believe, the setuptools god intends things to be.
 
 ## TODO
