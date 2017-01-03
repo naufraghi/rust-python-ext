@@ -1,7 +1,6 @@
 language: python
 python:
-  - "2.7"
-  - "3.5"
+  - "2.7"  # tox manages the python matrix
 env:
   - RUST_VERSION=stable
   - RUST_VERSION=nightly
