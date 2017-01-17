@@ -2,7 +2,7 @@
 
 [![build status](https://gitlab.com/naufraghi/rust-python-ext/badges/enable-ci/build.svg)](https://gitlab.com/naufraghi/rust-python-ext/pipelines/) (On the Gilab mirror)
 
-[![Build Status](https://travis-ci.org/naufraghi/rust-python-ext.svg?branch=master)](https://travis-ci.org/naufraghi/rust-python-ext) (Trafis on the GitHub fork)
+[![Build Status](https://travis-ci.org/naufraghi/rust-python-ext.svg?branch=master)](https://travis-ci.org/naufraghi/rust-python-ext) (Travis on the GitHub fork)
 
 Setuptools helpers for rust Python extensions.
 
