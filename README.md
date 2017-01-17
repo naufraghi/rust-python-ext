@@ -2,6 +2,8 @@
 
 [![build status](https://gitlab.com/naufraghi/rust-python-ext/badges/enable-ci/build.svg)](https://gitlab.com/naufraghi/rust-python-ext/pipelines/) (On the Gilab mirror)
 
+[![Build Status](https://travis-ci.org/naufraghi/rust-python-ext.svg?branch=master)](https://travis-ci.org/naufraghi/rust-python-ext) (Trafis on the GitHub fork)
+
 Setuptools helpers for rust Python extensions.
 
 Compile and distribute Python extensions written in rust as easily as if they were written in C.
