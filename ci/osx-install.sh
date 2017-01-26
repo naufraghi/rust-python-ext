@@ -1,4 +1,4 @@
 # osx install step
-git clone https://github.com/gappleto97/terryfy
+git clone https://github.com/MacPython/terryfy
 source terryfy/travis_tools.sh
 get_python_environment $pydist $pyver
