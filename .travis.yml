@@ -1,14 +1,60 @@
-language: python
-os:
-  - linux
-  - osx
-python:
-  - "2.7"  # tox manages the python matrix
-env:
-  - RUST_VERSION=stable
-  - RUST_VERSION=beta
-  - RUST_VERSION=nightly
-sudo: required
+matrix:
+  allow_failures:
+    os: osx
+  include:
+    # Execute this code installing *cogapp* from PyPI and then:
+    # `cog.py -r .travis.yml` to update inplace.
+    #[[[cog
+    #import cog
+    #template = """\
+    #- language: generic
+    #  python: {pyver}
+    #  os: osx
+    #  env:
+    #    - RUST_VERSION={rustver}
+    #- language: python
+    #  python: {pyver}
+    #  env:
+    #    - RUST_VERSION={rustver}\
+    #"""
+    #for pyver in ('2.7', ):  # tox manages the python matrix
+    #    for rustver in ('stable', 'beta', 'nightly'):
+    #        cog.outl(template.format(**locals()))
+    #]]]
+    - language: generic
+      python: 2.7
+      os: osx
+      env:
+        - RUST_VERSION=stable
+    - language: python
+      python: 2.7
+      env:
+        - RUST_VERSION=stable
+    - language: generic
+      python: 2.7
+      os: osx
+      env:
+        - RUST_VERSION=beta
+    - language: python
+      python: 2.7
+      env:
+        - RUST_VERSION=beta
+    - language: generic
+      python: 2.7
+      os: osx
+      env:
+        - RUST_VERSION=nightly
+    - language: python
+      python: 2.7
+      env:
+        - RUST_VERSION=nightly
+    #[[[end]]]
+
+#  Manually install python on osx
+before_install:
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then pyver=2.7 pydist=macpython ci/osx-install.sh; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then pyver=3.5 pydist=macpython ci/osx-install.sh; fi
+
 install:
   - curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain $RUST_VERSION
   - export PATH="$HOME/.cargo/bin:$PATH"
