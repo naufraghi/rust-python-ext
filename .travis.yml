@@ -52,8 +52,7 @@ matrix:
 
 #  Manually install python on osx
 before_install:
-  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then pyver=2.7 pydist=homebrew ci/osx-install.sh; fi
-  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then pyver=3.5 pydist=homebrew ci/osx-install.sh; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ci/osx-install.sh 2.7 3.5 ; fi
 
 install:
   - curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain $RUST_VERSION
