@@ -1,7 +1,7 @@
 #!/bin/sh
 
 brew update
-brew install pyenv
+brew upgrade pyenv
 for pyver in $@; do
   pyenv install $pyver
 done
