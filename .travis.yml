@@ -7,7 +7,7 @@ matrix:
     # Notes:
     #  - tox manages the python matrix
     #  - the linux image has most python versions preinstalled
-    #  - pyenv instals the required versions on osx
+    #  - brew installs the required versions on osx
     #[[[cog
     #import cog
     #template = """\
@@ -55,7 +55,7 @@ matrix:
 
 #  Manually install python on osx
 before_install:
-  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ci/osx-install.sh 2.7.12 3.5.2 ; fi
+  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then ci/osx-install.sh; fi
 
 install:
   - curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain $RUST_VERSION

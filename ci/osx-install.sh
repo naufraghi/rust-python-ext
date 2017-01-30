@@ -1,8 +1,8 @@
 #!/bin/sh
 
-brew update
-brew upgrade pyenv
-for pyver in $@; do
-  pyenv install $pyver
-done
-pyenv local $@
+brew tap zoidbergwill/python
+brew install python
+brew install python33
+brew install python34
+brew install python35
+brew install python36
